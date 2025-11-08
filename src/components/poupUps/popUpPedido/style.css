@@ -1,0 +1,68 @@
+.p-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s;
+}
+
+.p-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    animation: scaleUp 0.3s ease;
+    font-family: "Popppins", sans-serif;
+}
+
+.p-icon{
+    color: #28a745;
+    margin-bottom: 1rem;
+    animation: pulse 1.2s ease infinite;
+}
+
+.p-id {
+   margin: 1rem 0;
+   color: #333;
+   font-weight: 500;
+}
+
+.p-btn {
+    background: #ff8c00db;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.popup-btn:hover {
+    background: #e97e00;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}

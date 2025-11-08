@@ -1,0 +1,143 @@
+.footer {
+  background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: "Poppins", sans-serif;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* === CONTAINER FLEX PRINCIPAL === */
+.footer-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: 0 auto 20px;
+  gap: 60px;
+}
+
+/* === BLOCO SOBRE === */
+.footer-sobre {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  flex: 1 1 250px;
+}
+
+.footer-sobre img {
+  width: 180px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.footer-sobre p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+/* === BLOCO CONTATOS === */
+.footer-contatos {
+  flex: 1 1 220px;
+  padding-right: 40px;
+  border-right: 1px solid #444; /* divisor visual */
+}
+
+.footer-contatos h4 {
+  color: #ff7b00;
+  margin-bottom: 10px;
+}
+
+.footer-contatos ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contatos li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.footer-contatos a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.footer-contatos a:hover {
+  color: #ff7b00;
+}
+
+.footer-contatos .icon-f {
+  color: #ff7b00;
+  font-size: 1.1rem;
+  margin-right: 5px;
+}
+
+/* === BLOCO PRODUTOS === */
+.footer-produtos {
+  flex: 1 1 180px;
+  padding-left: 40px;
+}
+
+.footer-produtos h4 {
+  color: #ff7b00;
+  margin-bottom: 10px;
+}
+
+.footer-produtos ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-produtos li {
+  margin-bottom: 8px;
+}
+
+/* === SUBFOOTER === */
+.subfooter {
+  text-align: center;
+  border-top: 1px solid #444;
+  padding-top: 20px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 900px) {
+  .footer-flex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .footer-sobre {
+    align-items: center;
+  }
+
+  .footer-contatos {
+    border-right: none;
+    border-bottom: 1px solid #444;
+    padding-right: 0;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+  }
+
+  .footer-produtos {
+    padding-left: 0;
+  }
+
+  .footer-contatos li,
+  .footer-produtos li {
+    justify-content: center;
+  }
+}

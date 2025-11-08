@@ -1,0 +1,34 @@
+.header {
+    background-color: #fff;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0, 0.15);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+.logo img {
+  height: 60px; 
+  width: auto;  
+  display: block;
+  cursor: pointer;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #555;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: color 0.3s ease
+}
+
+.nav a:hover {
+    color:#ff8c00db;
+}

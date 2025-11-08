@@ -1,0 +1,309 @@
+/* ===========================
+   ⚙️ ANIMAÇÕES E CONFIGURAÇÕES BÁSICAS
+   =========================== */
+@keyframes odm-fade-in {
+  to { opacity: 1; }
+}
+
+@keyframes odm-pop-in {
+  to { transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .odm-overlay,
+  .odm-modal {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ===========================
+   🩵 OVERLAY (FUNDO ESCURO)
+   =========================== */
+.odm-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+  opacity: 0;
+  animation: odm-fade-in 160ms ease-out forwards;
+}
+
+/* ===========================
+   🪟 MODAL (CAIXA PRINCIPAL)
+   =========================== */
+.odm-modal {
+  width: min(920px, 94vw);
+  max-height: 86vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  font-family: "Poppins", sans-serif;
+
+  transform: translateY(4px) scale(0.98);
+  animation: odm-pop-in 180ms ease-out forwards;
+}
+
+/* Scrollbar */
+.odm-modal::-webkit-scrollbar {
+  width: 10px;
+}
+.odm-modal::-webkit-scrollbar-thumb {
+  background: #e7e3df;
+  border-radius: 10px;
+}
+.odm-modal::-webkit-scrollbar-thumb:hover {
+  background: #d6d0cb;
+}
+
+/* ===========================
+   🧭 CABEÇALHO DO MODAL
+   =========================== */
+.odm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  border-bottom: 1px solid #eee;
+}
+
+.odm-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: #3b2f2f;
+  letter-spacing: 0.2px;
+}
+
+.odm-title svg { color: #ff8c00db; }
+
+.odm-close {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 10px;
+  line-height: 0;
+  transition: background 0.2s;
+}
+.odm-close:hover { background: #f3f3f3; }
+.odm-close:focus-visible {
+  outline: 2px solid #ff8c00db;
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+/* ===========================
+   📋 CONTEÚDO PRINCIPAL
+   =========================== */
+.odm-content {
+  padding: 18px;
+}
+
+/* --- RESUMO GERAL --- */
+
+.odm-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.odm-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.odm-status {
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.odm-status.orçamento { background: #fff0e1; color: #b35f00; }
+.odm-status.finalizado { background: #e6ffec; color: #157347; }
+.odm-status.cancelado  { background: #ffe7e7; color: #b42318; }
+
+.odm-date,
+.odm-total {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #444;
+  font-weight: 500;
+}
+
+.odm-total { font-weight: 700; }
+
+.odm-summary svg { color: #ff8c00db; }
+.odm-filter svg {
+  color: #ff8c00db;
+  margin-bottom:  -7px;
+  margin-right: 5px
+
+}
+
+/* ===========================
+   📦 ITENS DO PEDIDO
+   =========================== */
+.odm-items {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.odm-item-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2f2b28;
+  margin-bottom: 8px;
+  font-weight: 600;
+  background: #faf9f8;
+  border: 1px solid #f0efed;
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: 0 1px 40x rgba(0, 0, 0, 0.04);
+}
+
+.odm-item-header svg {
+  color: #ff8c00db;
+}
+/* ===========================
+   🧾 TABELA DOS ITENS
+   =========================== */
+.odm-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  font-size: 0.93rem;
+}
+
+.odm-table th,
+.odm-table td {
+  border: 1px solid #e0dedc;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.odm-table th {
+  background: #fff6ee;
+  color: #663c00;
+  font-weight: 600;
+}
+
+.odm-table td {
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .odm-table th, .odm-table td {
+    font-size: 0.85rem;
+    padding: 6px 8px;
+  }
+}
+
+
+/* ===========================
+   🧩 ACESSÓRIOS
+   =========================== */
+.odm-accessories {
+  margin-top: 12px;
+  background: #fffdf9;
+  border: 1px solid #f2ebe3;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.odm-accessories > strong {
+  color: #663c00;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.odm-accessories ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 4px;
+}
+
+.odm-accessories li {
+  padding: 4px 0;
+  color: #333;
+  border-bottom: 1px dashed #e8e3de;
+}
+
+.odm-accessories li:last-child {
+  border-bottom: none;
+}
+
+.odm-accessories.muted {
+  color: #888;
+  font-style: italic;
+  background: #f8f8f8;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* ===========================
+   ⚠️ ESTADOS E MENSAGENS
+   =========================== */
+.odm-loading,
+.odm-error,
+.odm-fallback {
+  padding: 14px 2px;
+  color: #555;
+}
+
+.odm-error {
+  color: #b42318;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.odm-filter input {
+    width: 240px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    font-family: "Poppins", sans-serif;
+}
+
+.odm-filter input:focus {
+  outline: none;
+  border-color: #ff8c00db;
+  box-shadow: 0 0 0 2px #ff8c0044;
+}
+/* ===========================
+   🔗 LINKS E ÍCONES GERAIS
+   =========================== */
+.odm-link {
+  color: #ff8c00db;
+  font-weight: 600;
+  text-decoration: none;
+}
+.odm-link:hover { text-decoration: underline; }
+

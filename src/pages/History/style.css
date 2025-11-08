@@ -1,0 +1,86 @@
+.history-container {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
+}
+
+.history-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #3b2f2f;
+    border-bottom: 2px solid #ff8c00db;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px
+}
+
+.history-card {
+    background: #faf9f8;
+    border-radius: 10px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.history-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0 ,0.1)
+}
+
+.history-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status.orçamento {
+    background-color: #fff0e1;
+    color: #d97706;
+}
+
+.status.finalizado {
+    background-color: #e1ffe1;
+    color: #15803d
+}
+
+.status.cancelado {
+    background-color: #ffe1e1;
+    color: #b91c1c;
+}
+
+.h-card-body p{
+    color: #555;
+    font-size: 0.95rem;
+    margin: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px
+}
+
+.history-loading, .history-error, .history-empty {
+    text-align: center;
+    margin-top: 60px;
+    color: #666
+}
+
+.history-empty svg {
+  margin-bottom: 10px;
+}

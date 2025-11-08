@@ -1,0 +1,131 @@
+.overlay {
+    position: fixed;
+    top: 0px;          
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 900;        
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto
+}
+
+.side-menu {
+    width: 240px;
+    height: 100vh;
+    position: fixed;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+    padding: 20px 10px;
+    z-index: 1000;
+}
+
+.side-header{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255, 140, 0, 0.951);
+    margin-bottom: 20px;
+}
+
+.user-icon {
+    background: #dedede;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-name {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.side-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    color: black
+}
+
+.nav-item:hover{
+    background: rgba(206, 204, 204, 0.2);
+}
+
+.side-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.logout {
+ color: #ff8c00db;
+}
+
+.logout:hover {
+  background: rgba(206, 204, 204, 0.2);  
+}
+
+.delete {
+    color: #f87171;
+}
+
+.delete:hover {
+      background: rgba(248, 113, 113, 0.15);
+}
+
+.side-menu.collapsed {
+    transform: translateX(-260px);
+    transition: transform 0.3s ease
+}
+
+.toggle-button.collapsed {
+    left: 245px;
+}
+
+
+.toggle-button {
+    position: absolute;
+    top: 120px;
+    left: 10px;
+    background: #ff8c00db;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2 ease;
+}
+
+.toggle-button:hover {
+    background: #ff8c00db;
+}
+

@@ -1,0 +1,369 @@
+.home {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+.hero {
+  position: relative;
+  max-height: 60vh;
+  position: relative;
+  overflow: hidden;
+    
+}
+
+.hero-slider {
+ height: 100%;
+}
+
+.hero-slide {
+  position: relative;
+  height: 60vh;
+  overflow: hidden;
+
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5); 
+  padding: 30px 50px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
+
+.hero-overlay h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero-overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.hero-overlay button {
+  background: linear-gradient(135deg, #ff8c00db, #ffb347);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-overlay button:hover {
+  opacity: 0.9;
+}
+
+/* Slick arrows */
+.slick-prev, .slick-next {
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+}
+.slick-prev:before, .slick-next:before {
+  font-size: 35px;
+  color: #fff;
+  opacity: 0.8;
+}
+.slick-prev:hover:before, .slick-next:hover:before {
+  opacity: 1;
+  color: #ff8c00;
+}
+
+/* Slick dots */
+.slick-dots {
+  bottom: 20px;
+}
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #fff;
+  opacity: 0.7;
+}
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #ff8c00;
+}
+
+.sobre{
+  padding: 50px 20px;
+  background: #fff;
+}
+
+.sobre .container-sobre {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card-info {
+  flex: 1 1 45%;
+  background: #fafafa;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform;
+}
+
+.card-info:hover {
+  transform: translateY(-8px)
+}
+
+.card-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #222;
+}
+
+.card-info p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.localizacao {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.localizacao h2 {
+  font-size: 2rem;
+  margin-bottom: 2px;
+  color:  #333;
+}
+
+.localizacao-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.map {
+  flex: 1 1 400px;
+  min-height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.info-local {
+  flex: 1 1 350px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  margin-top: 36px;
+  margin-right: 20px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.8s ease forwards;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-local h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.info-local p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.endereco, .horarios {
+  background: #fafafa ;
+  padding: 15px 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s ease;
+}
+
+.acoes {
+   padding: 15px 20px;
+   gap: 10px;
+}
+
+.endereco:hover, .horarios:hover, .acoes:hover {
+  transform: translateY(-3px);
+}
+
+.endereco {
+  flex-direction: row;
+  align-items: center;
+}
+
+.endereco .icon {
+  font-size: 20px;
+  margin-right: 5px;
+  color: #ff8c00;
+  margin-bottom: 5px;
+}
+
+.horarios h4{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.horarios ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.horarios li{
+  font-size: 0.95rem;
+  color: #555;
+  padding-left: 5px;
+  position: relative;
+}
+
+.horarios li::before {
+   content: "⏰";
+   margin-right: 8px;
+   color: #ff8c00
+}
+
+.btn-maps {
+  align-self: center;
+  background: linear-gradient(135deg, #ff8c00db, #ffb347);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 140, 0 ,0.3);
+}
+
+.btn-maps:hover {
+   background: linear-gradient(135deg, #ff7b00, #ff9f40);
+   transform: translateY(-2px) scale(1.02);
+   box-shadow: 0 6px 18px rgba(255, 140, 0, 0.5);
+}
+
+.orcamento {
+ background: #fafafa;
+ text-align: center;
+ padding: 80px 20px;
+ position: relative;
+ overflow: hidden;
+}
+
+.orcamento-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.orcamento-txt h2{
+   font-size: 2rem;
+   margin-bottom: 20px;
+   font-weight: 600;
+   letter-spacing: 1px;
+}
+
+.orcamento-txt p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.btn-orcamento {
+  background: #ff8c00;
+  color: #fafafa;
+  font-weight: 600;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-orcamento:hover {
+  background: white;
+  color: #ff7b00;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.contato-orcamento::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: pulse 6s infinite linear;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 0.4; }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .orcamento-texto h2 {
+    font-size: 1.6rem;
+  }
+
+  .orcamento-texto p {
+    font-size: 0.95rem;
+  }
+
+  .btn-orcamento {
+    padding: 12px 26px;
+    font-size: 0.95rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .footer-flex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+}

@@ -1,0 +1,83 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.container a{
+    padding-top: 0;
+    margin-top: 0;
+    color: blue;
+    font-size: 11px;
+    text-decoration: underline;
+}
+
+.sucess-message {
+    margin-top: 20px;
+    padding: 15px 20px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    text-align:  center;
+    animation: fadeIn 0.5s ease-in-out
+}
+
+.log {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.log a {
+    color: #ff8c00db;
+    font-weight: bold;
+     font-size: 14px;
+    text-decoration: none;
+}
+
+.log a:hover {
+    text-decoration: underline;
+}
+
+.sucesso {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    opacity: 0;
+    animation: fadein 0.5s forwards, fadeout 0.5s 2.5s forwards;
+    z-index: 1000;
+}
+
+.sucesso.sucesso {
+    background-color: #4caf50;
+}
+
+.sucesso.erro {
+    background-color: #f44336;
+}
+
+@keyframes fadein {
+    from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; transform: translateX(-50%) translateY(0); }
+    to { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+}
+
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px)}
+    to {opacity: 1; transform: translateY(0)}
+}
+

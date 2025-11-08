@@ -1,0 +1,54 @@
+.form-e {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-e h1 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form-e-group {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-e-group p {
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.form-e-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.button-e-group {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.button-e-group button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.button-e-group button[type="submit"]{
+    background: #ff8c00db;
+    color: #fff;
+}
+
+.button-e-group button[type="button"]{
+    background: #ccc;
+}
