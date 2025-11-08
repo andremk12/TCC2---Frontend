@@ -7,13 +7,8 @@ function Header() {
 
   return (
     <header className="header">
-      <div className="logo">
-        <img
-          src={logo}
-          alt="Logo"
-          onClick={() => navigate('/')}
-          style={{ cursor: 'pointer' }}
-        />
+      <div className="logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+        <img src={logo} alt="Logo" />
       </div>
       <nav className="nav">
         <Link to="/">Home</Link>

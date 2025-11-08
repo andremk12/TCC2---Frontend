@@ -39,7 +39,7 @@ function Home() {
                            <div class = "hero-overlay">
                               <h1>SILVANI PERSIANAS</h1>
                               <p>Fabricante de cortinas e persianas sobre medida</p>
-                              <button onClick={() => navigate('/arealojista')}>
+                              <button onClick={() => navigate('/produtos')}>
                                  Conheça nossos produtos
                               </button>
                            </div>

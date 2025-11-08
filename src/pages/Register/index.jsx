@@ -4,7 +4,8 @@ import InputMask from 'react-input-mask'
 import api from '../../services/api'
 import React from 'react'
 import ClientForm from '../../components/forms/registerForm/registerForm'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+
 
 function Register() {
   const [users, setUsers] = useState([])
@@ -55,7 +56,7 @@ async function createUsers(data){
          </div>
         )}
       </div>
-        <span class = "log"> Ja possui cadastro? <a href="/login">Clique aqui</a></span>
+        <span class = "log"> Ja possui cadastro? <Link to="/login">Clique aqui</Link></span>
        </div>
 
 

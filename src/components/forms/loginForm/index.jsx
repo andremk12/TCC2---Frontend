@@ -2,6 +2,7 @@ import './style.css'
 import loginSchema from '../../../validations/loginSchema'
 import { useForm } from "react-hook-form"
 import { useState } from "react"
+import { Link } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { FaEye, FaEyeSlash, FaUser, FaLock, FaEnvelope } from "react-icons/fa";
 
@@ -37,7 +38,7 @@ function LoginForm({ onSubmit }) {
                 </div>
                 <span class = "error">{errors.senha?.message}</span>
 
-                <a href="/recuperacao" class="forgot">Esqueceu a senha?</a>
+                <Link to="/recuperacao" class="forgot">Esqueceu a senha?</Link>
 
                 <button type='submit' class="btnPrimary">Entrar</button>
 
