@@ -43,7 +43,7 @@ function LoginForm({ onSubmit }) {
                 <button type='submit' class="btnPrimary">Entrar</button>
 
                 <p class ="register">
-                        Não tem conta? <a href="/cadastrar">Cadastre-se</a>
+                        Não tem conta? <Link to="/cadastrar">Cadastre-se</Link>
                 </p>
 
         </form>
