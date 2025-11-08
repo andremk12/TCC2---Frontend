@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 
 
 // Páginas públicas
@@ -34,7 +34,7 @@ import PrivateRoute from './Routes/PrivateRoute'
 
 createRoot(document.getElementById('root')).render(
 <StrictMode>
-    <BrowserRouter>
+    <HashRouter>
      {/* Header global (se quiser ocultar em algumas telas, mover pra um Layout público) */}
     <Header />
 
@@ -87,6 +87,6 @@ createRoot(document.getElementById('root')).render(
       <Route path="/erro/503" element={<ErrorPage code={503} />} />
       <Route path="*" element={<ErrorPage code={404} />} />
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 </StrictMode>
 )
