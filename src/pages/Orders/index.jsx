@@ -581,6 +581,7 @@ function Order() {
                               inputMode="decimal"
                               value={item.largura} 
                               placeholder="ex: 1,50"
+                              max = {3}
                               onChange={(e) => handleChange(index, "largura", e.target.value)} 
                             />
                           </div>
@@ -593,6 +594,7 @@ function Order() {
                               type="number" 
                               inputMode="decimal"
                               value={item.altura} 
+                              max = {3}
                               placeholder="ex: 2,20"
                               onChange={(e) => handleChange(index, "altura", e.target.value)}
                             />
