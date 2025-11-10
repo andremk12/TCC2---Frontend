@@ -256,8 +256,8 @@ function AdmPage() {
                   onChange={(e) => setNovoStatus(e.target.value)}
                 >
                   <option value="pendente">Pendente</option>
-                  <option value="aprovado">Aprovado</option>
-                  <option value="reprovado">Reprovado</option>
+                  <option value="ativo">Ativo</option>
+                  <option value="inativo">Inativo</option>
                 </select>
                 <div className="submodal-close">
                   <button

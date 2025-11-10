@@ -220,12 +220,12 @@
   text-transform: capitalize;
 }
 
-.status-badge.aprovado {
+.status-badge.ativo {
   background: #e8f8e8;
   color: #2e7d32;
 }
 
-.status-badge.reprovado {
+.status-badge.inativo {
   background: #ffeaea;
   color: #c62828;
 }
