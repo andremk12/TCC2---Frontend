@@ -53,7 +53,7 @@ api.interceptors.response.use(
       );
 
       localStorage.removeItem("token"); // limpa o token
-      window.location.replace("/login"); // redireciona
+      window.location.replace("/#/login"); // redireciona
     }
 
     return Promise.reject(error);

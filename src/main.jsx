@@ -24,6 +24,7 @@ import Order from './pages/Orders'
 import History from './pages/History'
 import EditScreen from './pages/Edit'
 import PriceTable from './pages/Prices'
+import AdmPage from './pages/AdmPage'
 
 
 // Proteções
@@ -47,7 +48,14 @@ createRoot(document.getElementById('root')).render(
     <Route path="/recuperacao" element={<Recovery />} />
     <Route path="/resetar-senha/:token" element={<Reset />} />
 
-
+    <Route 
+      path="/adm" 
+      element = { 
+      <PrivateRoute>
+        <AdmPage/>
+    </PrivateRoute>
+    }
+    />
 
 
         {/* Login bloqueado para usuários já logados */}
