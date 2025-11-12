@@ -1,58 +1,65 @@
 import './style.css'
 import e404 from "../../assets/404.png"
 import errorA from "../../assets/fofichu.png"
+import { useNavigate } from 'react-router-dom'
 import Footer from '../../components/footer'
 
 function ErrorPage({ code = 404}) {
+        const navigate = useNavigate()
+
+        const goHome  = () => navigate('/', {replace: true})
+        const goLogin = () => navigate('/login', { replace: true})
+        const tryAgain = () => window.location.reload()
+
 
         const errorData = {
             401: {
                 title: "Acesso não autorizado",
                 message: "Você precisa fazer login para ver esta página 🔑",
                 buttonText: "Ir para o login",
-                action: () => (window.location.href = "/login"),
+                action: goLogin,
                 image: errorA,
             },
             403: {
                 title: "Acesso negado",
                 message: "Você não tem permissão para acessar esta página 🚷",
                 buttonText: "Voltar para o início",
-                action: () => (window.location.href = "/"),
+                action: goHome,
                 image: errorA,
             },
             404: {
                 title: "Oops! Página não encontrada",
                 message: "Parece que você se perdeu no caminho 🧭",
                 buttonText: "Voltar para o início",
-                action: () => (window.location.href = "/"),
+                action: goHome,
                 image: e404,
             },
             500: {
                 title: "Algo deu errado no servidor",
                 message: "Parece que houve um problema do nosso lado 💻",
                 buttonText: "Voltar para o início",
-                action: () => (window.location.href = "/"),
+                action: goHome,
                 image: errorA,
             },
             501: {
                 title: "Função não implementada",
                 message: "O servidor ainda não sabe lidar com essa requisição 🧩",
                 buttonText: "Voltar para o início",
-                action: () => (window.location.href = "/"),
+                action: goHome,
                 image: errorA,
             },
             502: {
                 title: "Erro na comunicação do servidor",
                 message: "Recebemos uma resposta inválida de outro servidor 🌐",
                 buttonText: "Tentar novamente",
-                action: () => window.location.reload(),
+                action:tryAgain,
                 image: errorA,
             },
             503: {
                 title: "Serviço temporariamente indisponível",
                 message: "Estamos em manutenção ou o servidor está sobrecarregado 🛠",
                 buttonText: "Voltar para o início",
-                action: () => (window.location.href = "/"),
+                action: tryAgain,
                 image: errorA,
             }
         }

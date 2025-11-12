@@ -25,7 +25,7 @@ function Login() {
             setShow(true)
 
             setTimeout( () => {
-                navigate('/arealojista')
+                navigate('/login')
             }, 3000)
         } catch (err) {
             console.log("Erro detalhado:", err)

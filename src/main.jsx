@@ -31,7 +31,7 @@ import AdmPage from './pages/AdmPage'
 
 import LogedRoute from './Routes/alreadyLoged'
 import PrivateRoute from './Routes/PrivateRoute'
-
+import AdminRoute from './Routes/admRoute'
 
 createRoot(document.getElementById('root')).render(
 <StrictMode>
@@ -51,9 +51,9 @@ createRoot(document.getElementById('root')).render(
     <Route 
       path="/adm" 
       element = { 
-      <PrivateRoute>
-        <AdmPage/>
-    </PrivateRoute>
+      <AdminRoute>
+          <AdmPage/>
+      </AdminRoute>
     }
     />
 
