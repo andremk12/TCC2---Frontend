@@ -12,12 +12,12 @@ import "./style.css";
 import api from "../../services/api";
 
 function AdmPage() {
-  const [modalAberto, setModalAberto] = useState(null); // "clientes" | "orcamentos"
+  const [modalAberto, setModalAberto] = useState(null);
   const [clientes, setClientes] = useState([]);
   const [orcamentos, setOrcamentos] = useState([]);
   const [filtro, setFiltro] = useState("");
 
-  // ⏳ Estados de carregamento separados
+
   const [loadingClientes, setLoadingClientes] = useState(false);
   const [loadingOrcamentos, setLoadingOrcamentos] = useState(false);
 
@@ -25,7 +25,13 @@ function AdmPage() {
   const [orcamentoEditando, setOrcamentoEditando] = useState(null);
   const [novoStatus, setNovoStatus] = useState("");
 
-  // 🔸 Buscar clientes reais
+  const [salvarStatus, setSalvarStatus] = useState(false)
+  const [erroStatus, setErroStatus] = useState("")
+
+  const [sucessoStatus, setSucessoStatus] = useState(false)
+  const [toast, setToast] = useState(null)
+
+
   useEffect(() => {
     const buscarClientes = async () => {
       setLoadingClientes(true);
@@ -45,7 +51,7 @@ function AdmPage() {
     if (modalAberto === "clientes") buscarClientes();
   }, [modalAberto]);
 
-  // 🔸 Mock temporário de orçamentos
+
   useEffect(() => {
     if (modalAberto === "orcamentos") {
       setLoadingOrcamentos(true);
@@ -78,7 +84,7 @@ function AdmPage() {
     }
   }, [modalAberto]);
 
-  // 🔹 Filtros
+
   const clientesFiltrados = clientes.filter((c) =>
     c.name?.toLowerCase().includes(filtro.toLowerCase())
   );
@@ -86,31 +92,58 @@ function AdmPage() {
     o.cliente?.toLowerCase().includes(filtro.toLowerCase())
   );
 
-  // 🔹 Editar status cliente
+
   const editarStatusCliente = (cliente) => {
     setClienteEditando(cliente);
     setNovoStatus(cliente.status);
   };
 
-  const salvarStatusCliente = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      await api.put(
-        `/clientes/${clienteEditando.id}`,
-        { status: novoStatus },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+  async function  atualizarStatusCliente(id, status) {
+    const token = localStorage.getItem("token")
 
+    return api.put( `/adm/clientes/status/${id}`, { status }, {headers: { Authorization: `Bearer ${token}`}})
+  }
+
+   const salvarStatusCliente = async () => {
+    if (!clienteEditando) return;
+    setErroStatus("");
+    setSalvarStatus(true);
+
+    const idAlvo = clienteEditando.id;
+    const statusAnterior = clienteEditando.status;
+
+    setClientes((prev) =>
+      prev.map((c) => (c.id === idAlvo ? { ...c, status: novoStatus } : c))
+    );
+
+    try {
+      await atualizarStatusCliente(idAlvo, novoStatus);
+
+      setSucessoStatus(true);
+      setToast("Status atualizado com sucesso!")
+
+      setTimeout(() => {
+          setClienteEditando(null)
+      }, 900)
+
+      setTimeout(() => setToast(null), 3000)
+    } catch (e) {
+      console.error("Erro ao atualizar status:", e);
+      const msg =
+        e?.response?.data?.erro ||
+        e?.message ||
+        "Não foi possível atualizar o status.";
+      setErroStatus(msg);
+
+      // rollback
       setClientes((prev) =>
-        prev.map((c) =>
-          c.id === clienteEditando.id ? { ...c, status: novoStatus } : c
-        )
+        prev.map((c) => (c.id === idAlvo ? { ...c, status: statusAnterior } : c))
       );
-      setClienteEditando(null);
-    } catch (err) {
-      console.error("Erro ao atualizar status:", err);
+    } finally {
+      setSalvarStatus(false);
     }
   };
+
 
   // 🔹 Editar status orçamento
   const editarStatusOrcamento = (orcamento) => {
@@ -137,6 +170,9 @@ function AdmPage() {
 
   return (
     <div className="adm-container">
+      
+      {toast && <div class = "toast success">{toast}</div>}
+
       <h1 className="adm-title">Painel do Administrador</h1>
       <p className="adm-subtitle">
         Selecione uma das opções abaixo para gerenciar o sistema.
@@ -263,11 +299,24 @@ function AdmPage() {
                   <button
                     onClick={() => setClienteEditando(null)}
                     className="cancelar-btn"
+                    disabled={salvarStatus}
                   >
                     <XCircle size={16} /> Cancelar
                   </button>
-                  <button onClick={salvarStatusCliente} className="salvar-btn">
-                    <CheckCircle size={16} /> Salvar
+                  <button onClick={salvarStatusCliente} className={`salvar-btn ${sucessoStatus ? "succces": ""}`} disabled={salvarStatus}>
+                       {salvarStatus ? (
+                            <>
+                              <Loader2 className="spin" size={16} /> Salvando...
+                            </>
+                          ) : sucessoStatus ? (
+                            <>
+                              <CheckCircle size={16} /> Salvo!
+                            </>
+                          ) : (
+                            <>
+                              <CheckCircle size={16} /> Salvar
+                            </>
+                        )}
                   </button>
                 </div>
               </div>

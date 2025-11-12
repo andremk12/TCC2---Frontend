@@ -332,3 +332,33 @@
   }
 }
 
+.toast {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #fff;
+  z-index: 1100;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.15);
+  opacity: 0;
+  animation: toast-in 160ms ease-out forwards, toast-out 260ms ease-in 2.7s forwards;
+}
+.toast.success { background: #29a36a; }
+
+@keyframes toast-in { to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+@keyframes toast-out { to { opacity: 0; transform: translateX(-50%) translateY(-6px); } }
+
+
+.salvar-btn.success {
+  background: #29a36a !important;
+  border-color: #29a36a !important;
+}
+
+
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+
