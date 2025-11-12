@@ -1,5 +1,6 @@
 import editSchema from "../../../validations/editSchema"
 import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect } from "react"
 import "./style.css"
@@ -17,6 +18,8 @@ function EditForm({ onSubmit, defaultValues }){
       useEffect(() => {
     if (defaultValues) reset(defaultValues);
   }, [defaultValues, reset]);
+
+  const navigate = useNavigate()
   
    return(
      <form onSubmit={handleSubmit(onSubmit)} class="form-e">
@@ -53,14 +56,12 @@ function EditForm({ onSubmit, defaultValues }){
             </div>
 
             <div class="form-e-group">
-                <p>Senha</p>
-                <input placeholder="Deixe vazio para manter a senha atual" type = "password" {...register("senha")}/>
-                <span>{errors.senha?.message}</span>
+                <button type = "button" onClick={() => navigate("/recuperacao")} class = "btnc-passwd"> Alterar Senha  </button>
             </div>
 
             <div class ="button-e-group">
                 <button type ="submit">Salvar alterações</button>
-                <button type = "button" onClick = {() => {window.location.href = "/arealojista"}}> Voltar </button>
+                <button type = "button" onClick = {() => navigate("/arealojista")}> Voltar </button>
             </div>
             
      </form>
