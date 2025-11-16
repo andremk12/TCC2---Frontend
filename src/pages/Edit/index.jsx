@@ -51,7 +51,7 @@ useEffect(() => {
    <>
     <EditForm
       onSubmit={handleSubmit}
-      defaultValues={{ ...user, senha: "" }} 
+      defaultValues={{ ...user}} 
     />
 
       {showMessage && (

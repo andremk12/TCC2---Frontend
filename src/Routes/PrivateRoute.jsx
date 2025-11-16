@@ -16,17 +16,23 @@ export default function PrivateRoute({ children }) {
       }
 
       try {
-        const resp = await api.get("/login/me", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const resp = await api.get("/login/me")
 
         const status = resp?.data?.status?.toLowerCase?.();
-        setAllowed(status === "ativo");
+
+        if (status === "ativo") {
+          setAllowed(true)
+        } else {
+           localStorage.removeItem("token")
+           setAllowed(false)
+        }
+
       } catch (e) {
-        console.error("Erro ao verificar usuário:", e);
-        setAllowed(false);
+        console.error("Erro ao verificar usuário:", e)
+        localStorage.removeItem("token")
+        setAllowed(false)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     };
 
@@ -34,7 +40,7 @@ export default function PrivateRoute({ children }) {
   }, []);
 
   if (loading) {
-    return <div>Verificando acesso...</div>; // opcional: pode trocar por um spinner
+    return <div>Verificando acesso...</div>; 
   }
 
   return allowed ? children : <Navigate to="/login" replace />;
