@@ -8,12 +8,13 @@ import "slick-carousel/slick/slick-theme.css"
 import img1 from "../../assets/cortina1.jpg"
 import img2 from "../../assets/cortina2.jpg"
 import img3 from "../../assets/cortina3.jpg"
+import img4 from "../../assets/cortina4.jpg"
 import Footer from '../../components/footer'
 
 
 
 function Home() {
-   const images = [img1, img2, img3] 
+   const images = [img1, img2, img3, img4] 
    const navigate = useNavigate()
 
    const settings = {
@@ -36,16 +37,16 @@ function Home() {
                    {images.map((img, i) => (
                      <div key={i} class = "hero-slide">
                            <img src={img} alt= {`cortina-${i}`} />
-                           <div class = "hero-overlay">
+                     </div>
+                   ))}
+               </Slider>
+                   <div class = "hero-overlay">
                               <h1>SILVANI PERSIANAS</h1>
                               <p>Fabricante de cortinas e persianas sobre medida</p>
                               <button onClick={() => navigate('/produtos')}>
                                  Conheça nossos produtos
                               </button>
-                           </div>
-                     </div>
-                   ))}
-               </Slider>
+                      </div>
             </section>
 
             <section class = "sobre">

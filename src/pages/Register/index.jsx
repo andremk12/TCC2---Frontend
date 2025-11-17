@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './style.css'
 import InputMask from 'react-input-mask'
 import api from '../../services/api'
 import React from 'react'
 import ClientForm from '../../components/forms/registerForm/registerForm'
 import { useNavigate, Link } from 'react-router-dom'
+import Footer from '../../components/footer'
 
 
 function Register() {
@@ -34,6 +35,7 @@ async function createUsers(data){
 }
     
   return (
+      <>
        <div class = 'container'>
             <ClientForm onSubmit={createUsers}/>
         <div>
@@ -47,7 +49,8 @@ async function createUsers(data){
         <span class = "log"> Ja possui cadastro? <Link to="/login">Clique aqui</Link></span>
        </div>
 
-
+       <Footer/>
+    </>
   )
 }
 

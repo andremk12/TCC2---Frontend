@@ -211,3 +211,53 @@
         padding: 12px 10px;
     }
 }
+
+@media (max-width: 768px) {
+
+  /* Card mais moderno */
+  .rows {
+    border-left: 4px solid #ff8c00db;
+    background: #fffdf9;
+    padding: 18px 14px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(255, 140, 0, 0.12);
+  }
+
+  .rows span {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.95rem;
+    padding: 4px 0;
+    color: #444;
+  }
+
+  /* Label (antes ::before) fica mais bonito com fonte menor */
+  .rows span::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #3b2f2f;
+    width: 48%;
+    font-size: 0.88rem;
+  }
+
+  /* Última linha (total ou ações) fica destacada */
+  .rows:last-child {
+    border-left-color: #28a745;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .rows {
+    padding: 16px 12px;
+  }
+
+  .rows span {
+    font-size: 0.9rem;
+  }
+
+  .rows span::before {
+    font-size: 0.85rem;
+  }
+}

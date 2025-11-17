@@ -21,7 +21,7 @@ function Footer() {
           <ul>
             <li>
               <FaRegEnvelope className="icon-f" />
-              <a href="mailto:silvanipersianas@email.com">
+              <a href="mailto:silvanipersianas@hotmail.com">
                 silvanipersianas@email.com
               </a>
             </li>
@@ -37,7 +37,7 @@ function Footer() {
             </li>
             <li>
               <FaPhone className="icon-f" />
-              <span>(27) XXXX-XXXX</span>
+              <span>(27) 3319-0520</span>
             </li>
           </ul>
         </div>

@@ -6,7 +6,7 @@
   min-height: 100vh;
   text-align: center;
   font-family: "Poppins", Arial, sans-serif;
-  background-color: linear-gradient(135deg, #fff6ef 0%, #ffe3cc 100%);
+  background: linear-gradient(135deg, #fff6ef 0%, #ffe3cc 100%);
   padding: 20px;
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -26,13 +26,14 @@
 
 .err-image {
   width: 70%;
-  max-width: 300px;
-  margin-bottom: 20px;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
 }
 
 .err-title {
   font-size: 1.6rem;
-  font-size: 600;
+  font-weight: 600;
   color: #ff8c22;
   margin-bottom: 8px ;
 }
@@ -60,4 +61,61 @@
   background-color: #e67a1b;
   transform: scale(1.05);
 
+}
+
+@media (max-width: 768px) {
+  .err-card {
+    padding: 40px 24px;
+    margin-top: -40px;
+    margin-bottom: -20px;
+    width: 94%;
+  }
+
+  .err-image {
+    width: 65%;
+    max-width: 240px;
+    margin-bottom: 10px;
+  }
+
+  .err-title {
+    font-size: 1.4rem;
+  }
+
+  .err-message {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .err-container {
+    padding: 16px;
+  }
+
+  .err-card {
+    padding: 32px 18px;
+    margin-top: -20px;
+    margin-bottom: 0;
+    width: 100%;
+    border-radius: 18px;
+  }
+
+  .err-image {
+    width: 70%;
+    max-width: 210px;
+  }
+
+  .err-title {
+    font-size: 1.25rem;
+  }
+
+  .err-message {
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+  }
+
+  .err-button {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 0.95rem;
+  }
 }

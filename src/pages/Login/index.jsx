@@ -45,11 +45,11 @@ function Login() {
   }
 
   return (
-    <div class="login-container">
-      <div class="left-section">
+    <div className="login-container">
+      <div className="left-section">
         <LoginForm onSubmit={handleLogin} />
       </div>
-      <div class="right-section">
+      <div className="right-section">
         <img src={loginImage} alt="Tela de login" />
       </div>
 

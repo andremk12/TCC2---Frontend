@@ -79,7 +79,7 @@ function PriceTable() {
 
             <div class = "table">
                 <div class = "table-header">
-                    <span>ID</span>
+                    <span >ID</span>
                     <span>Tipo</span>
                     <span>Grupo</span>
                     <span>Linha</span>
@@ -88,15 +88,19 @@ function PriceTable() {
                 </div>
             </div>
 
-            {filteredProducts.map((products, index) => (
+            {filteredProducts.map((product, index) => (
                 <div key={index} class = "rows">
-                    <span>{products.codigo_interno_csv}</span>
-                    <span>{products.tipo}</span>
-                    <span>{products.grupo}</span>
-                    <span>{products.linha}</span>
-                    <span>{products.colecao}</span>
-                    <span>{products.preco_m2?.toFixed(2)} R$</span>
-                </div>
+                     <span data-label="🆔 ID">
+              {product.codigo_interno_csv}
+            </span>
+            <span data-label="📦 Tipo">{product.tipo}</span>
+            <span data-label="🧩 Grupo">{product.grupo}</span>
+            <span data-label="🏷️ Linha">{product.linha}</span>
+            <span data-label="🎨 Coleção">{product.colecao}</span>
+            <span data-label="💲 Preço Base (m²)">  
+              {product.preco_m2?.toFixed(2)} R$
+            </span>    
+            </div>
             ))}
 
             {filteredProducts.length === 0 && (

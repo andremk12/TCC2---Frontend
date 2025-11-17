@@ -266,3 +266,134 @@
         grid-template-columns: 1fr auto;
     }
 }
+
+/* ============================== */
+/*         RESPONSIVO GERAL       */
+/* ============================== */
+
+@media (max-width: 900px) {
+
+  .order-container {
+    max-width: 100%;
+    margin: 20px 0;
+    padding: 20px 16px;
+    border-radius: 0; /* Fica igual a apps mobile */
+  }
+
+  .order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+/* ============================== */
+/*      MOBILE — ATÉ 768px        */
+/* ============================== */
+
+@media (max-width: 768px) {
+
+  .primary-infos {
+    grid-template-columns: 1fr; /* sempre 1 coluna no mobile */
+    gap: 12px;
+    padding: 1rem;
+  }
+
+  .user-info {
+    padding: 0.5rem;
+  }
+
+  .user-info h2 {
+    margin-left: 0;
+    font-size: 1.1rem;
+  }
+
+  .user-info p {
+    font-size: 0.9rem;
+  }
+
+  .item-card {
+    padding: 0.8rem;
+  }
+
+  .item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .item-header .buttons {
+    gap: 12px;
+  }
+
+  .dimensions-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .dimension-field {
+    width: 100%;
+  }
+
+  .summary-card {
+    padding: 18px;
+  }
+
+  .summary-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+  }
+}
+
+/* ============================== */
+/*     MOBILE PEQUENO — 480px     */
+/* ============================== */
+
+@media (max-width: 480px) {
+
+  .order-container {
+    padding: 16px 12px;
+  }
+
+  .order-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .primary-infos {
+    padding: 0.8rem;
+  }
+
+  .item-card {
+    padding: 0.7rem;
+  }
+
+  .form-row label,
+  .dimension-field label {
+    font-size: 0.85rem;
+  }
+
+  .form-row input,
+  .form-row select {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .dimensions-container {
+    gap: 10px;
+  }
+
+  .summary-item,
+  .summary-total {
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+}

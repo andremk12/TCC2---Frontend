@@ -84,3 +84,59 @@
 .history-empty svg {
   margin-bottom: 10px;
 }
+
+@media (max-width: 900px) {
+  .history-container {
+    max-width: 90%;
+    padding: 24px;
+    margin: 24px auto;
+  }
+
+  .history-title {
+    font-size: 1.1rem;
+    padding-bottom: 8px;
+  }
+
+  .history-card {
+    padding: 14px 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .history-container {
+    max-width: 100%;
+    border-radius: 0;           
+    padding: 20px 16px;
+    margin: 0;
+  }
+
+  .history-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .status {
+    align-self: flex-start;    
+    font-size: 0.78rem;
+    padding: 4px 8px;
+  }
+
+  .h-card-body p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-container {
+    padding: 16px 12px;
+  }
+
+  .history-card {
+    padding: 12px 14px;
+  }
+
+  .h-card-body p {
+    font-size: 0.85rem;
+  }
+}

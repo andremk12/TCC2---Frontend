@@ -2,7 +2,7 @@
     background-color: #fff;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     padding: 20px 40px;
     display: flex;
     justify-content: space-between;
@@ -21,6 +21,12 @@
   align-items: center;
 }
 
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 25px
+}
+
 .nav a {
     text-decoration: none;
     color: #555;
@@ -31,4 +37,21 @@
 
 .nav a:hover {
     color:#ff8c00db;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 12px 16px;
+  }
+
+  .logo img {
+    height: 48px;
+  }
+
+  .nav {
+    gap: 12px;
+    font-size: 0.85rem;
+    flex-wrap: wrap;        /* permite quebrar linha se faltar espaço */
+    justify-content: flex-end;
+  }
 }

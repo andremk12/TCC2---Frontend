@@ -1,6 +1,7 @@
 import "./style.css"
 import { useState } from "react"
 import api from "../../services/api"
+import Footer from "../../components/footer"
 
 function Recovery() {
 
@@ -31,7 +32,8 @@ function Recovery() {
     }
     
     return (
-        <div class = "recovery-container">
+       <>
+       <div class = "recovery-container">
             <h2> Recuperar Senha</h2>
 
             <p class = "recovery-subtiitle">
@@ -55,6 +57,8 @@ function Recovery() {
             {menssage && <p class = "sucesso">{menssage}</p>}
             {erro && <p class = "erro">{erro}</p>}
         </div>
+        <Footer/>
+    </>
     )
 }
 

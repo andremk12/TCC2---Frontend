@@ -1,77 +1,61 @@
 import './style.css'
-import { useState, useEffect } from 'react'
 // import api from '../../services/api'
-import ProductGrid from '../../components/productsGrid'
 import Footer from '../../components/footer'
-import { GalleryHorizontal } from 'lucide-react'
 
-
-
-const mockProdutos = [
-  {
-    id: 1,
-    nome: "Cortina Blackout Premium",
-    cor: "Cinza Chumbo",
-    material: "Poliéster 100%",
-    valor: 249.90,
-    tamanho: "2,00m x 1,80m",
-    quantidade: 12,
-    imagem: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+const produtos = [
+   {
+    nome: "Persiana Rolô Blackout",
+    isRecomendado: true,
+    imagem:
+      "https://images.pexels.com/photos/3965520/pexels-photo-3965520.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+   {
+    nome: "Cortina Wave Linho",
+    isRecomendado: false,
+    imagem:
+      "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=800&q=80",
   },
   {
-    id: 2,
-    nome: "Cortina de Linho Natural",
-    cor: "Bege Areia",
-    material: "Linho e Algodão",
-    valor: 329.00,
-    tamanho: "2,50m x 2,00m",
-    quantidade: 8,
-    imagem: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+    nome: "Persiana Romana Duo",
+    isRecomendado: true,
+    imagem:
+      "https://images.pexels.com/photos/3965552/pexels-photo-3965552.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
-    id: 3,
-    nome: "Cortina Translúcida Luxo",
-    cor: "Branca",
-    material: "Voil Importado",
-    valor: 199.90,
-    tamanho: "2,20m x 1,50m",
-    quantidade: 20,
-    imagem: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+    nome: "Cortina Painel Translúcida",
+    isRecomendado: false,
+    imagem:
+      "https://images.pexels.com/photos/6585763/pexels-photo-6585763.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
-    id: 4,
-    nome: "Cortina Térmica Eclipse",
-    cor: "Azul Marinho",
-    material: "Blackout Termoacústico",
-    valor: 289.90,
-    tamanho: "2,80m x 2,00m",
-    quantidade: 5,
-    imagem: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+    nome: "Persiana de Alumínio 25mm",
+    isRecomendado: false,
+    imagem:
+      "https://images.pexels.com/photos/534172/pexels-photo-534172.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
-    id: 5,
-    nome: "Cortina de Veludo Clássica",
-    cor: "Verde Musgo",
-    material: "Veludo Premium",
-    valor: 399.00,
-    tamanho: "2,60m x 2,20m",
-    quantidade: 4,
-    imagem: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+    nome: "Cortina de Tecido Blackout",
+    isRecomendado: true,
+    imagem:
+      "https://images.pexels.com/photos/6585764/pexels-photo-6585764.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
-    id: 6,
-    nome: "Cortina Estampada Floral",
-    cor: "Rosa Claro",
-    material: "Algodão Misto",
-    valor: 179.90,
-    tamanho: "2,00m x 1,50m",
-    quantidade: 15,
-    imagem:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-  }
+    nome: "Persiana Vertical Tecido",
+    isRecomendado: false,
+    imagem:
+      "https://images.pexels.com/photos/6585768/pexels-photo-6585768.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    nome: "Cortina Rolô Tela Solar",
+    isRecomendado: true,
+    imagem:
+      "https://images.pexels.com/photos/6585765/pexels-photo-6585765.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
 ]
 
 function Products() {
-  const [produtos, setProdutos] = useState([])
+ 
+
 
   // useEffect(() => {
   //   async function getProducts() {
@@ -98,39 +82,54 @@ function Products() {
   //   getProducts()
   // }, [])
 
-   useEffect(() => {
-    // Simula tempo de carregamento da API
-    const timer = setTimeout(() => {
-      setProdutos(mockProdutos)
-    }, 800)
-
-    return () => clearTimeout(timer)
-  }, [])
-
 
   return (
     <>
-      <div class = "products-page">
-         <div class = "products-card">
-              <div class = "products-header">
-                  <div class = "products-header-left">
-                     <GalleryHorizontal class = "products-icon"/>
-                     <h2>Conheça nossos produtos</h2>
-                  </div>
-              </div>
+        <div className="products-ctn">
+            <section className = "products-hero">
+                <h1 className = "products-title">Catálogo de Produtos</h1>
+                <p className="products-stitle">
+                      Confira algumas opções selecionadas do nosso portfólio. Produtos em destaque recebem nossa recomendação exclusiva.
+                </p>
+            </section>
 
-              <p class = "products-subtitle">
-                Cortinas que unem estilom conforto e funcionalidade
-              </p>
+            <section className = "products-grid">
+                {produtos.map((produto, index) => (
+                    <article key={index}
+                             className={`product-card ${produto.isRecomendado ? "product-card--highlight" : ""}`}
+                    >
+                        {produto.isRecomendado && (
+                            <span className="product-badge">
+                                Recomendação Exclusiva - Nome da Empresa
+                            </span>
+                        )}
 
-              <div class = "products-container">
-                  <ProductGrid items ={produtos} showPrice ={false}/>
-              </div>
-          </div> 
-       </div>
+
+                        <div className="product-card-body">
+                          <div className = "product-image-wrapper">
+                                <img 
+                                  src={produto.imagem}
+                                  alt={produto.nome}
+                                  className="product-image"
+                                  />
+                          </div>
+
+
+
+                          <h2 className  = "product-name"> {produto.nome}</h2>
+                          <p className = "product-description">
+                             Solução moderna, funcional e ideial para compor ambientes com conforto e estilo
+                          </p>
+
+                          <button className='product-button'> Ver detalhes</button>
+                        </div>
+                    </article>
+                ))}
+            </section>
+        </div>
 
       <Footer/>
-    </>
+  </>
   )
 }
 
