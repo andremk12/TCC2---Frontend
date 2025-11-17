@@ -31,6 +31,9 @@ function AdmPage() {
   const [sucessoStatus, setSucessoStatus] = useState(false)
   const [toast, setToast] = useState(null)
 
+  const [salvandoPedido, setSalvandoPedido] = useState(false);
+  const [erroPedido, setErroPedido] = useState("");
+
 
   useEffect(() => {
     const buscarClientes = async () => {
@@ -52,38 +55,32 @@ function AdmPage() {
   }, [modalAberto]);
 
 
-  useEffect(() => {
-    if (modalAberto === "orcamentos") {
-      setLoadingOrcamentos(true);
-      setTimeout(() => {
-        setOrcamentos([
-          {
-            id: 1,
-            cliente: "Loja A",
-            total: 1230.5,
-            data: "2025-10-20",
-            status: "pendente",
-          },
-          {
-            id: 2,
-            cliente: "Comercial D",
-            total: 2950.0,
-            data: "2025-10-28",
-            status: "em análise",
-          },
-          {
-            id: 3,
-            cliente: "Persianas Luz",
-            total: 800.99,
-            data: "2025-11-02",
-            status: "aprovado",
-          },
-        ]);
-        setLoadingOrcamentos(false);
-      }, 800);
+ useEffect(() => {
+  const buscarPedidos = async () => {
+    setLoadingOrcamentos(true)
+    try {
+      const response = await api.get("/adm/pedidos")
+      setOrcamentos(response.data || [])
+    } catch (err) {
+       console.error("Erro ao buscar pedidos:", err)
+    } finally {
+      setLoadingOrcamentos(false)
     }
-  }, [modalAberto]);
+  }
 
+  if (modalAberto === "orcamentos") {
+    buscarPedidos()
+  }
+ }, [modalAberto])
+
+function getStatusClass(status) {
+  if (!status) return "";
+  return String(status)
+    .toLowerCase()
+    .normalize("NFD")              // tira acentos (Orçamento -> Orcamento)
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-");         // espaços viram hífen (em análise -> em-analise)
+}
 
   const clientesFiltrados = clientes.filter((c) =>
     c.name?.toLowerCase().includes(filtro.toLowerCase())
@@ -144,21 +141,61 @@ function AdmPage() {
     }
   };
 
+  
+
 
   // 🔹 Editar status orçamento
   const editarStatusOrcamento = (orcamento) => {
     setOrcamentoEditando(orcamento);
     setNovoStatus(orcamento.status);
+ 
   };
 
-  const salvarStatusOrcamento = () => {
+  async function atualizarStatusPedido(id, status) {
+        return api.put(`/adm/pedidos/status/${id}`, {status})
+  }
+const salvarStatusOrcamento = async () => {
+  if (!orcamentoEditando) return;
+
+  setErroPedido("");
+  setSalvandoPedido(true);
+
+  const idAlvo = orcamentoEditando.id;
+  const statusAnterior = orcamentoEditando.status;
+
+  // 🔹 Atualização otimista na lista da tela
+  setOrcamentos((prev) =>
+    prev.map((o) =>
+      o.id === idAlvo ? { ...o, status: novoStatus } : o
+    )
+  );
+
+  try {
+    await atualizarStatusPedido(idAlvo, novoStatus);
+
+    setToast("Status do pedido atualizado com sucesso!");
+    setTimeout(() => setToast(null), 3000);
+
+    // fecha submodal
+    setOrcamentoEditando(null);
+  } catch (e) {
+    console.error("Erro ao atualizar status do pedido:", e);
+    const msg =
+      e?.response?.data?.erro ||
+      e?.message ||
+      "Não foi possível atualizar o status do pedido.";
+    setErroPedido(msg);
+
+    // 🔁 rollback se der erro
     setOrcamentos((prev) =>
       prev.map((o) =>
-        o.id === orcamentoEditando.id ? { ...o, status: novoStatus } : o
+        o.id === idAlvo ? { ...o, status: statusAnterior } : o
       )
     );
-    setOrcamentoEditando(null);
-  };
+  } finally {
+    setSalvandoPedido(false);
+  }
+};
 
   // 🔹 Fecha modal de forma segura
   const fecharModal = () => {
@@ -360,38 +397,57 @@ function AdmPage() {
             ) : (
               <div className="table-scroll">
                 <table className="clientes-table modal-view">
-                  <thead>
-                    <tr>
-                      <th>Cliente</th>
-                      <th>Data</th>
-                      <th>Total</th>
-                      <th>Status</th>
-                      <th>Ação</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {orcamentosFiltrados.map((o) => (
-                      <tr key={o.id}>
-                        <td>{o.cliente}</td>
-                        <td>{new Date(o.data).toLocaleDateString("pt-BR")}</td>
-                        <td>R$ {o.total.toFixed(2).replace(".", ",")}</td>
-                        <td>
-                          <span className={`status-badge ${o.status}`}>
-                            {o.status.toUpperCase()}
-                          </span>
-                        </td>
-                        <td>
-                          <button
-                            className="editar-btn"
-                            onClick={() => editarStatusOrcamento(o)}
-                          >
-                            Editar
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Cliente</th>
+                          <th>CNPJ</th>
+                          <th>Status</th>
+                          <th>Valor total</th>
+                          <th>Data</th>
+                          <th>Ação</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {orcamentosFiltrados.map((o) => (
+                          <tr key={o.id}>
+                            <td>{o.id}</td>
+                            <td>{o.cliente}</td>
+                            <td>{o.cnpj || "-"}</td>
+                            <td>
+                              <span className={`status-badge ${getStatusClass(o.status)}`}>
+                                {String(o.status || "").toUpperCase()}
+                              </span>
+                            </td>
+                            <td>
+                              R$ {Number(o.total || 0).toFixed(2).replace(".", ",")}
+                            </td>
+                            <td>
+                              {o.data
+                                ? new Date(o.data).toLocaleDateString("pt-BR")
+                                : "-"}
+                            </td>
+                            <td>
+                              <button
+                                className="editar-btn"
+                                onClick={() => editarStatusOrcamento(o)}
+                              >
+                                Editar
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+
+                        {orcamentosFiltrados.length === 0 && !loadingOrcamentos && (
+                          <tr>
+                            <td colSpan={7} style={{ textAlign: "center" }}>
+                              Nenhum pedido encontrado.
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+
               </div>
             )}
 

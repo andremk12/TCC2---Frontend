@@ -140,7 +140,7 @@
 .table-scroll {
   max-height: 55vh;         /* limite da área visível */
   overflow-y: auto;          /* ativa scroll vertical */
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 /* Mantém o cabeçalho fixo durante a rolagem */
@@ -320,6 +320,29 @@
 
 .submodal-close .salvar-btn:hover {
   background-color: #ff8c00;
+}
+
+
+.status-badge.orcamento {
+  background: #fff8e1;
+  color: #ff8c00db;
+}
+
+.status-badge.finalizado,
+.status-badge.aprovado {
+  background: #e8f8e8;
+  color: #2e7d32;
+}
+
+.status-badge.cancelado,
+.status-badge.recusado {
+  background: #ffeaea;
+  color: #c62828;
+}
+
+.status-badge.em-analise {
+  background: #e3f2fd;
+  color: #1565c0;
 }
 
 .spin {
