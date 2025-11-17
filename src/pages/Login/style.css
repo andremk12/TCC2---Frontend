@@ -33,6 +33,12 @@
     display: block;
 }
 
+.left-section > * {
+    width: 100%;
+    max-width: 420px;
+    padding: 0 24px;
+}
+
 
 .mensagem {
     position: fixed;
@@ -64,4 +70,54 @@
 @keyframes fadeout {
     from { opacity: 1; transform: translateX(-50%) translateY(0); }
     to { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+}
+
+@media (max-width: 1024px) {
+    .login-container {
+        height: 100vh;
+    }
+
+    .left-section {
+        padding-bottom: 40px;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .login-container{
+        flex-direction: column-reverse;
+        height: 100vh;
+    }
+
+    .left-section {
+        flex: 1;
+        padding-bottom: 20px;
+        justify-content: flex-start;
+    }
+
+    .right-section {
+        flex: 0 0 35vh
+    }
+
+    .right-section img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .mensagem {
+        top: 10px;
+        font-size: 0.9rem;
+        padding: 10px 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .left-section > * {
+        max-width: 100%;
+        padding: 0 16px;
+    }
+
+    .right-section {
+        flex: 0 0 30vh;
+    }
 }

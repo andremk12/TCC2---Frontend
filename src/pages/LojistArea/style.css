@@ -1,7 +1,8 @@
 .area-lojista {
     padding: 40px 20px;
     font-family: "Poppins" ,sans-serif;
-    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .area-lojista h1 {
@@ -151,3 +152,19 @@
     to { transform: translateY(0); opacity: 1; }
 }
 
+
+@media (max-width: 768px) {
+    .area-lojista {
+        padding: 24px 16px;
+    }
+
+    .area-lojista-content {
+        justify-content: flex-start;
+        gap: 16px;
+    }
+
+    .area-lojista h1 {
+        font-size: 1.6rem;
+        margin-bottom: 24px;
+    }
+}
