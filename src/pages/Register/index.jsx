@@ -8,17 +8,10 @@ import { useNavigate, Link } from 'react-router-dom'
 
 
 function Register() {
-  const [users, setUsers] = useState([])
   const navigate = useNavigate()
   const [sucess, setSuccess] = useState("")
   const [type, setType] = useState("sucesso")
   const [shMsg, setShMsg] = useState(false)
-
- async function getUsers(){
-    const usersData = await api.get('/clientes_cadastrados')
-
-    setUsers(usersData.data)
- }
 
 async function createUsers(data){
   try {
@@ -26,7 +19,7 @@ async function createUsers(data){
     setSuccess("Cadastro realizado com sucesso! Redirecionaremos você para login")
     setType("Sucesso")
     setShMsg(true)
-    getUsers()
+
 
     setTimeout(() => {
       navigate('/login')
@@ -40,11 +33,6 @@ async function createUsers(data){
   }
 }
     
-
- useEffect(() => {
-      getUsers()
- }, [])
-
   return (
        <div class = 'container'>
             <ClientForm onSubmit={createUsers}/>
