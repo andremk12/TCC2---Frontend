@@ -784,8 +784,9 @@
 @media (max-width: 768px) {
   /* HERO */
   .hero {
-    height: auto;
-    max-height: none;
+    height:32vh;
+    max-height: 260px ;
+    overflow: hidden;
   }
 
   .hero-slide {
@@ -794,7 +795,7 @@
 
   .hero-slide img {
     max-height: 60vh;
-    object-fit: cover; /* preenche melhor em tela alta e estreita */
+    object-fit: cover; 
   }
 
   .hero-overlay {
