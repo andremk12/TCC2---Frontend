@@ -4,6 +4,7 @@ import api from "../../services/api.js"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import loginImage from "../../assets/imagemLogin3.jpg"
+import Footer from '../../components/footer/index.jsx'
 
 function Login() {
   const navigate = useNavigate()
@@ -45,20 +46,24 @@ function Login() {
   }
 
   return (
+    <>
     <div className="login-container">
-      <div className="left-section">
-        <LoginForm onSubmit={handleLogin} />
-      </div>
-      <div className="right-section">
-        <img src={loginImage} alt="Tela de login" />
+        <div className="left-section">
+          <LoginForm onSubmit={handleLogin} />
+        </div>
+        <div className="right-section">
+          <img src={loginImage} alt="Tela de login" />
+        </div>
+
+        {show && (
+          <div className={`mensagem ${type}`}>
+            {message}
+          </div>
+        )}
       </div>
 
-      {show && (
-        <div className={`mensagem ${type}`}>
-          {message}
-        </div>
-      )}
-    </div>
+      <Footer/>
+    </>
   )
 }
 

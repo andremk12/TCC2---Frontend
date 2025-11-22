@@ -1,68 +1,156 @@
 .form-e {
-    max-width: 500px;
-    margin: 0 auto;
-    margin-top: 10px;
-    padding: 24px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin: 16px auto 32px;
+  padding: 24px 22px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  font-family: "Poppins", sans-serif;
 }
 
 .form-e h1 {
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
 }
 
+/* GRUPOS DE CAMPOS */
 .form-e-group {
-    margin-bottom: 16px;
-    display: flex;
-    flex-direction: column;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-e-group p {
-    margin-bottom: 6px;
-    font-weight: 500;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #444;
 }
 
+/* INPUTS */
 .form-e-group input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.button-e-group {
-    display: flex;
-    gap: 12px;
-    justify-content: flex-end;
+.form-e-group input:focus {
+  outline: none;
+  border-color: #ff8c00db;
+  box-shadow: 0 0 0 2px #ff8c0044;
 }
 
-.button-e-group button {
-    padding: 10px 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+/* ERROS DE VALIDAÇÃO */
+.form-e-error {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #e53935;
 }
 
+/* BOTÃO ALTERAR SENHA */
 .btnc-passwd {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    background: #ff8c00db ;
-    color: #fff;
-    cursor: pointer;
-}
-
-.button-e-group button[type="submit"]{
-    background: #ff8c00db;
-    color: #fff;
-}
-
-.button-e-group button[type="button"]{
-    background: #ccc;
+  align-self: flex-start;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #ff8c00db;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .btnc-passwd:hover {
-    color: #ff8c00db;
-    background-color: #fff;
+  color: #ff8c00db;
+  background-color: #fff;
+  border: 1px solid #ff8c00db;
+}
+
+/* GRUPO DE BOTÕES FINAIS */
+.button-e-group {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.button-e-group button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+/* SUBMIT */
+.button-e-group button[type="submit"] {
+  background: #ff8c00db;
+  color: #fff;
+}
+
+.button-e-group button[type="submit"]:hover {
+  background: #ff9a26;
+  transform: translateY(-1px);
+}
+
+/* VOLTAR */
+.button-e-group button[type="button"] {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.button-e-group button[type="button"]:hover {
+  background: #d5d5d5;
+}
+
+/* ===================== */
+/*      RESPONSIVO       */
+/* ===================== */
+
+@media (max-width: 768px) {
+  .form-e {
+    margin: 12px 12px 24px;
+    padding: 20px 16px;
+  }
+
+  .button-e-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button-e-group button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btnc-passwd {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-e h1 {
+    font-size: 1.1rem;
+  }
+
+  .form-e-group p {
+    font-size: 0.9rem;
+  }
+
+  .form-e-group input {
+    font-size: 0.9rem;
+    padding: 9px 10px;
+  }
+
+  .form-e-error {
+    font-size: 0.78rem;
+  }
 }

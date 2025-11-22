@@ -1,119 +1,187 @@
 .newForm {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background: #fff;
-    padding: 40px 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    max-width: 420px;
-    width: 100%;
-    animation: fadeIn 0.6 ease;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #fff;
+  padding: 40px 32px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  max-width: 420px;
+  width: 100%;
+  animation: fadeIn 0.6s ease;
 }
 
+/* TITULOS */
 .title {
-    font-size: 28px;
-    font-weight: 700;
-    text-align: center;
-    color: #333;
-    font-family: "Poppins" sans-serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: center;
+  color: #333;
+  font-family: "Poppins", sans-serif;
 }
 
 .subtitle {
-    font-size: 14px;
-    color: #666;
-    text-align: center;
-    margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
+/* INPUTS */
 .inputGroup {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    background: #f5f5f5;
-    border-radius: 10px;
-    padding: 0 10px
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 0 12px;
+  transition: all 0.2s;
+}
+
+.inputGroup:focus-within {
+  border-color: #ff8c00db;
+  background: #fff;
+  box-shadow: 0 0 0 2px #ff8c0036;
 }
 
 .inputGroup input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    height: 45px;
-    font-size: 15px;
-    padding-left: 10px;
-    outline: none;
+  flex: 1;
+  border: none;
+  background: transparent;
+  height: 48px;
+  font-size: 0.95rem;
+  padding-left: 10px;
+  outline: none;
 }
 
 .inputGroup .icon {
   color: #999;
-  font-size: 18px;
-  margin-top: 12px;
+  font-size: 17px;
 }
 
+/* BOTÃO OLHO */
 .toggle-passwd {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color:#666;
-    font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color:#666;
+  font-size: 18px;
 }
 
 .toggle-passwd:hover{
-    color: #ff8c00db
+  color: #ff8c00db;
 }
 
+/* ERROS */
 .error {
-    font-size: 12px;
-    color:rgba(234, 63, 63, 0.971);
-    margin-top: -8px;
+  font-size: 12px;
+  color: #e53935;
+  margin-top: -8px;
 }
 
+/* ESQUECEU SENHA */
 .forgot{
-    font-size: 13px;
-    text-align: right;
-    color: #555;
-    text-decoration: none;
+  font-size: 13px;
+  text-align: right;
+  color: #555;
+  text-decoration: none;
 }
 
 .forgot:hover {
-    color: #ff8c00db
+  color: #ff8c00db;
 }
 
+/* BOTÃO LOGIN */
 .btnPrimary {
-    background: linear-gradient(135deg, #ff8c00db, #ffb347);
-    border: none;
-    padding: 12px;
-    border-radius: 10px;
-    font-weight: bold;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s
+  background: linear-gradient(135deg, #ff8c00db, #ffb347);
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+  margin-top: 5px;
 }
 
 .btnPrimary:hover{
-    opacity: 0.9;
+  opacity: 0.92;
+  transform: translateY(-1px);
 }
 
+/* REGISTRO */
 .register {
-    text-align: center;
-    font-size: 14px;
-    color: #555;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 10px;
 }
 
 .register a {
-    color: #ff8c00db;
-    font-weight: bold;
-    text-decoration: none;
+  color: #ff8c00db;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .register a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
+/* ========================= */
+/* 📱 RESPONSIVO MOBILE */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .newForm {
+    padding: 28px 20px;
+    border-radius: 14px;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .inputGroup input {
+    height: 44px;
+    font-size: 0.9rem;
+  }
+
+  .btnPrimary {
+    padding: 13px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .newForm {
+    padding: 24px 16px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .register {
+    font-size: 0.85rem;
+  }
+
+  .forgot {
+    font-size: 0.8rem;
+  }
+
+  .btnPrimary {
+    font-size: 0.9rem;
+  }
+}
+
+/* ANIMAÇÃO */
 @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
+  from {opacity: 0; transform: translateY(15px);}
+  to {opacity: 1; transform: translateY(0);}
 }

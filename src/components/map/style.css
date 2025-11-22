@@ -1,0 +1,45 @@
+.map-wrapper {
+  height: 516px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* garante que o leaflet ocupe tudo dentro do wrapper */
+.map-leaflet {
+  height: 100%;
+  width: 100%;
+}
+
+/* ====== RESPONSIVO ====== */
+
+@media (max-width: 900px) {
+  .map-wrapper {
+    height: 380px;
+    width: 95%;
+    margin: 32px auto;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-wrapper {
+    height: 320px;
+    width: 100%;
+    margin: 24px auto 32px;
+    border-radius: 16px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@media (max-width: 480px) {
+  .map-wrapper {
+    height: 260px;
+    margin: 18px auto 28px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}

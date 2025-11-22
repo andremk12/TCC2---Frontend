@@ -3,6 +3,7 @@
     align-items: center;
     flex-direction: column;
     padding-top: 20px;
+    margin-bottom: 25px;
 }
 
 .container a{
