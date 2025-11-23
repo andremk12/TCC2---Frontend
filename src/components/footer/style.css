@@ -131,4 +131,7 @@
 
   .footer-card li,
   .footer-card a,
-  .footer-card
+  .footer-card span {
+    font-size: 0.85rem;
+  }
+} 
