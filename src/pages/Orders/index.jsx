@@ -90,12 +90,12 @@ function Order() {
  const fetchTabela = async () =>{
     try {
        const token = localStorage.getItem("token");
-       const { data } = await api.get("/formulario_pedido/precos-base-ids", { // <-- MUDANÇA AQUI
+       const { data } = await api.get("/formulario_pedido/precos-base-ids", { 
           headers: {Authorization: `Bearer ${token}`},
         });
         setPrecos(data || []);
   } catch (err) {
-     console.error("Erro ao consultar tabela de preços base:", err); // <-- MUDANÇA AQUI
+     console.error("Erro ao consultar tabela de preços base:", err); 
  }
    }
  fetchTabela();
@@ -271,7 +271,7 @@ function Order() {
         return copia;
       });
 
-    // 2) Buscar novas opções da API
+   
     try {
       if (field === "tipo") {
         const [gruposRes, acessoriosRes, acionamentosRes] = await Promise.all([

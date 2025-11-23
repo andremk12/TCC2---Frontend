@@ -154,6 +154,7 @@ function getStatusClass(status) {
   async function atualizarStatusPedido(id, status) {
         return api.put(`/adm/pedidos/status/${id}`, {status})
   }
+  
 const salvarStatusOrcamento = async () => {
   if (!orcamentoEditando) return;
 

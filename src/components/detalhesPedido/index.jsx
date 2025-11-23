@@ -124,41 +124,39 @@ function DetalhesModal({ open, onClose, details }) {
                     </strong>
                   </div>
 
-                  <div className = "odm-table-wrapper">
-                      <table className="odm-table">
-                        <thead>
-                          <tr>
-                            <th>Dimensões</th>
-                            <th>Cor</th>
-                            <th>Acionamento</th>
-                            <th>Qtd</th>
-                            <th>Subtotal</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>{it.largura}m x {it.altura}m</td>
-                            <td>{it.cores?.nome}</td>
-                            <td>{it.acionamentos?.nome}</td>
-                            <td>{it.quantidade}</td>
-                            <td>
-                              {(() => {
-                                const totalItem = Number(it.preco_calculado_item) || 0;
-                                const totalAcessorios = (it.acessorios || []).reduce(
-                                  (acc, a) => acc + (Number(a.valor_custo) || 0),
-                                  0
-                                );
-                                const subtotalSemAcessorios = totalItem - totalAcessorios;
-                                return subtotalSemAcessorios.toLocaleString("pt-BR", {
-                                  style: "currency",
-                                  currency: "BRL",
-                                });
-                              })()}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                  </div>
+                  <table className="odm-table">
+                    <thead>
+                      <tr>
+                        <th>Dimensões</th>
+                        <th>Cor</th>
+                        <th>Acionamento</th>
+                        <th>Qtd</th>
+                        <th>Subtotal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{it.largura}m x {it.altura}m</td>
+                        <td>{it.cores?.nome}</td>
+                        <td>{it.acionamentos?.nome}</td>
+                        <td>{it.quantidade}</td>
+                        <td>
+                          {(() => {
+                            const totalItem = Number(it.preco_calculado_item) || 0;
+                            const totalAcessorios = (it.acessorios || []).reduce(
+                              (acc, a) => acc + (Number(a.valor_custo) || 0),
+                              0
+                            );
+                            const subtotalSemAcessorios = totalItem - totalAcessorios;
+                            return subtotalSemAcessorios.toLocaleString("pt-BR", {
+                              style: "currency",
+                              currency: "BRL",
+                            });
+                          })()}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
 
                   {it.acessorios?.length ? (
                     <div className="odm-accessories">
