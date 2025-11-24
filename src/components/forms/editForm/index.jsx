@@ -22,44 +22,44 @@ function EditForm({ onSubmit, defaultValues }){
   const navigate = useNavigate()
   
    return(
-     <form onSubmit={handleSubmit(onSubmit)} class="form-e">
+     <form onSubmit={handleSubmit(onSubmit)} className="form-e">
             <h1>Editar perfil</h1>
 
-            <div class="form-e-group">
+            <div className="form-e-group">
                 <p>Nome de sua loja</p>
                 <input placeholder="Insira o nome da loja" {...register("name")}/>
                 <span>{errors.name?.message}</span>
             </div>
 
-            <div class="form-e-group">
+            <div className="form-e-group">
                 <p>CNPJ</p>
                 <input placeholder="CNPJ" {...register("cnpj")}/>
                 <span>{errors.cnpj?.message}</span>
             </div>
 
-            <div class="form-e-group">
+            <div className="form-e-group">
                 <p>Razão Social</p>
                 <input placeholder="Razão social" {...register("razaosocial")}/>
                 <span>{errors.razaosocial?.message}</span>
             </div>
 
-            <div class="form-e-group">
+            <div className="form-e-group">
                 <p>Email</p>
                 <input placeholder="Email" {...register("email")}/>
                 <span>{errors.email?.message}</span>
             </div>
             
-            <div class="form-e-group">
+            <div className="form-e-group">
                 <p>Endereço</p>
                 <input placeholder="Endereço da loja" {...register("address")}/>
                 <span>{errors.address?.message}</span>
             </div>
 
-            <div class="form-e-group">
-                <button type = "button" onClick={() => navigate("/recuperacao")} class = "btnc-passwd"> Alterar Senha  </button>
+            <div className="form-e-group">
+                <button type = "button" onClick={() => navigate("/recuperacao")} className = "btnc-passwd"> Alterar Senha  </button>
             </div>
 
-            <div class ="button-e-group">
+            <div className ="button-e-group">
                 <button type ="submit">Salvar alterações</button>
                 <button type = "button" onClick = {() => navigate("/arealojista")}> Voltar </button>
             </div>

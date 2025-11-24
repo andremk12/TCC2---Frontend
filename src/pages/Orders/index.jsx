@@ -6,6 +6,7 @@ import SelectSearch from "../../components/SearchbleSelect";
 import OrderPup from "../../components/poupUps/popUpPedido";
 
 
+
 const getNomeById = (array, id) => {
   if (!array || !id) return '';
   const encontrado = array.find(item => String(item.id) === String(id));
@@ -224,7 +225,12 @@ function Order() {
       const item = { ...copia[index] };
 
       if (field === "largura" || field === "altura") {
-          item[field] = value.replace(/[^0-9,.]/g, ''); 
+          let valor = value.replace(/[^0-9,.]/g, '').replace(',', '.')
+          
+          if (parseFloat(valor) > 3) {
+            valor = "3"
+          }
+            item[field] = valor 
           copia[index] = item;
           return copia;
       }
