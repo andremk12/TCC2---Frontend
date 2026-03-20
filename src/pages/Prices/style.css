@@ -46,16 +46,7 @@
 
 .search-input {
     flex: 0 0 60%;
-    max-width: 600px;
-    height: 48px;
-    padding: 10px 14px;
-    font-size: 1rem;
-    border: 1px solid #d1d1d1;
-    border-radius: 10px;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    background: #fdfdfd ;
-    line-height: 1;
+    min-width: 220px;
 }
 
 .category-select {
@@ -260,4 +251,86 @@
   .rows span::before {
     font-size: 0.85rem;
   }
+}
+
+.extra-table-container {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px dashed #e0c3a3 ;
+}
+
+.extra-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #3b2f2f;
+    margin-bottom: 16px;
+}
+
+.extra-table {
+    display: grid;
+    gap: 10px;
+}
+
+.extra-header, .extra-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 12px 14px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.extra-header {
+    background: linear-gradient(135deg, #e0c3a3, #f5e2c1) ;
+    font-weight: 600;
+    color: #3b2f2f;
+}
+
+.extra-row {
+    background: #fffaf3;
+    border: 1px solid #eee;
+    transition: 0.2s;
+}
+
+.extra-header, .extra-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 12px 14px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.extra-row:hover {
+    background: #fff3e0;
+    transform: translateY(-2px);
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tabs button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    background: #f1f1f1;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.tabs button:hover {
+    background: #e4e4e4;
+}
+
+.tabs button.active {
+    background: #ff8c00db;
+    color: white;
+}
+
+.tabs button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
