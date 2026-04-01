@@ -2,88 +2,197 @@ import './style.css'
 // import api from '../../services/api'
 import Footer from '../../components/footer'
 
+// Double Visions
+import db1 from "../../assets/cotinas/Cortinas Double Vision/db1.jpg"
+import db2 from "../../assets/cotinas/Cortinas Double Vision/db2.jpg"
+import db3 from "../../assets/cotinas/Cortinas Double Vision/db3.jpg"
+
+// Painel Europa
+import pe1 from "../../assets/cotinas/Cortinas Painel Europa/pe1.jpg"
+import pe2 from "../../assets/cotinas/Cortinas Painel Europa/pe2.jpg"
+import pe3 from "../../assets/cotinas/Cortinas Painel Europa/pe3.jpeg"
+import pe4 from "../../assets/cotinas/Cortinas Painel Europa/pe4.jpeg"
+import pe5 from "../../assets/cotinas/Cortinas Painel Europa/pe5.jpeg"
+
+// Painel Roma 
+import pr1 from "../../assets/cotinas/Cortinas Painel Roma/pr1.jpeg"
+import pr2 from "../../assets/cotinas/Cortinas Painel Roma/pr2.jpeg"
+
+// PVT
+import pvt1 from "../../assets/cotinas/Cortinas PVT/pvt1.jpg"
+
+// Rolo
+import rolo1 from "../../assets/cotinas/Cortinas Rolô/rolo1.jpg"
+import rolo2 from "../../assets/cotinas/Cortinas Rolô/rolo2.jpg"
+import rolo3 from "../../assets/cotinas/Cortinas Rolô/rolo3.jpg"
+import rolo4 from "../../assets/cotinas/Cortinas Rolô/rolo4.jpg"
+import rolo5 from "../../assets/cotinas/Cortinas Rolô/rolo5.jpg"
+import rolo6 from "../../assets/cotinas/Cortinas Rolô/rolo6.jpg"
+import rolo7 from "../../assets/cotinas/Cortinas Rolô/rolo7.jpg"
+import rolo8 from "../../assets/cotinas/Cortinas Rolô/rolo8.jpg"
+import rolo9 from "../../assets/cotinas/Cortinas Rolô/rolo9.jpg"
+import rolo10 from "../../assets/cotinas/Cortinas Rolô/rolo10.jpeg"
+import rolo11 from "../../assets/cotinas/Cortinas Rolô/rolo11.jpeg"
+import rolo12 from "../../assets/cotinas/Cortinas Rolô/rolo12.jpeg"
+
+// Romanas
+import romana from "../../assets/cotinas/Cortinas Romana/romana.jpg"
+
+// Horizontais 25m
+import hor1 from "../../assets/cotinas/Persianas Horizontais 25mm/hor1.jpg"
+import hor2 from "../../assets/cotinas/Persianas Horizontais 25mm/hor2.jpg"
+import hor3 from "../../assets/cotinas/Persianas Horizontais 25mm/hor3.jpg"
+
+import { useState } from "react"
+import { useNavigate } from 'react-router-dom';
 
 const produtos = [
   {
-    nome: "Persiana Rolô Blackout",
-    imagem: "https://images.pexels.com/photos/3965520/pexels-photo-3965520.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imagem: db1,
+    tipo: "Double-Vision"
   },
   {
-    nome: "Cortina Wave Linho",
-    imagem: "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=800&q=80",
+    imagem: db2,
+    tipo: "Double-Vision"
   },
   {
-    nome: "Persiana Romana Duo",
-    imagem: "https://images.pexels.com/photos/3965552/pexels-photo-3965552.jpeg?auto=compress&cs=tinysrgb&w=800",
-  },
-  {
-    nome: "Cortina Painel Translúcida",
-    imagem: "https://images.pexels.com/photos/6585763/pexels-photo-6585763.jpeg?auto=compress&cs=tinysrgb&w=800",
-  },
-  {
-    nome: "Persiana de Alumínio 25mm",
-    imagem: "https://images.pexels.com/photos/534172/pexels-photo-534172.jpeg?auto=compress&cs=tinysrgb&w=800",
-  },
-  {
-    nome: "Cortina de Tecido Blackout",
-    imagem: "https://images.pexels.com/photos/6585764/pexels-photo-6585764.jpeg?auto=compress&cs=tinysrgb&w=800",
-  },
-  {
-    nome: "Persiana Vertical Tecido",
-    imagem: "https://images.pexels.com/photos/6585768/pexels-photo-6585768.jpeg?auto=compress&cs=tinysrgb&w=800",
-  },
-  {
-    nome: "Cortina Rolô Tela Solar",
-    imagem: "https://images.pexels.com/photos/6585765/pexels-photo-6585765.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imagem: db3,
+    tipo: "Double-Vision"
   },
 
   {
-    nome: "Cortina Luxo Bege",
-    imagem: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
+    imagem: pe1,
+    tipo: "Painel-Europa"
   },
   {
-    nome: "Cortina Quarto Aconchegante",
-    imagem: "https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=800&q=80",
+    imagem: pe2,
+    tipo: "Painel-Europa"
   },
   {
-    nome: "Persiana Sala Ampla",
-    imagem: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
+    imagem: pe3,
+    tipo: "Painel-Europa"
   },
   {
-    nome: "Cortina Elegante Cinza",
-    imagem: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80",
+    imagem: pe4,
+    tipo: "Painel-Europa"
   },
+  {
+    imagem: pe5,
+    tipo: "Painel-Europa"
+  },
+  
+  {
+    imagem: pr1,
+    tipo: "Painel-Roma"
+  },
+  {
+    imagem: pr2,
+    tipo: "Painel-Roma"
+  },
+
+  {
+    imagem: pvt1,
+    tipo: "Pvt"
+  },
+
+
+  {
+    imagem: rolo1,
+    tipo: "Rolo"
+  },
+
+  {
+    imagem: rolo2,
+    tipo: "Rolo"
+  },
+
+  {
+    imagem: rolo3,
+    tipo: "Rolo"
+  },
+
+  {
+    imagem: rolo4,
+    tipo: "Rolo"
+  },
+
+  {
+    imagem: rolo5,
+    tipo: "Rolo"
+  },
+
+  {
+    imagem: rolo6,
+    tipo: "Rolo"
+  },
+
+  {
+    imagem: rolo7,
+    tipo: "Rolo"
+  },
+
+  {
+    imagem: rolo8,
+    tipo: "Rolo"
+  },
+
+  {
+    imagem: rolo9,
+    tipo: "Rolo"
+  },
+
+  {
+    imagem: rolo10,
+    tipo: "Rolo"
+  },
+
+  {
+    imagem: rolo11,
+    tipo: "Rolo"
+  },
+
+  {
+    imagem: rolo12,
+    tipo: "Rolo"
+  },
+  
+  {
+    imagem: romana,
+    tipo: "Romana"
+  },
+
+  {
+    imagem: hor1,
+    tipo: "pers-hor25"
+  },
+  
+  {
+    imagem: hor2,
+    tipo: "pers-hor25"
+  },
+ 
+  {
+    imagem: hor3,
+    tipo: "pers-hor25"
+  }
+
 ]
 
 function Products() {
+
  
+  const [filtro, setFiltro] = useState("Todos")
+  const navigate = useNavigate()
 
+  const filtrosMap = {
+    Todos: () => true,
+    Persianas: p => p.tipo === "pers-hor25",
+    Cortinas: p => ["Double-Vision", "Painel-Europa", "Painel-Roma", "Pvt", "Romana"].includes(p.tipo),
+    Blackout: p => p.tipo === "Pvt",
+    Rolô: p => p.tipo === "Rolo"
+  }
 
-  // useEffect(() => {
-  //   async function getProducts() {
-  //     try {
-  //       const response = await api.get('/produtos')
-
-
-  //       const mappedData = response.data.map(item => ({
-  //         image: item.imagem || 'https://via.placeholder.com/300x200',
-  //         title: item.nome,
-  //         color: item.cor,
-  //         material: item.material,
-  //         price: item.valor ? `R$ ${Number(item.valor).toFixed(2)}` : '—',
-  //         size: item.tamanho,
-  //         quantity: item.quantidade
-  //       }))
-
-  //       setProdutos(mappedData)
-  //     } catch (error) {
-  //       console.error("Erro ao buscar produtos:", error)
-  //     }
-  //   }
-
-  //   getProducts()
-  // }, [])
-
+  const produtosFiltrados = produtos.filter(filtrosMap[filtro])
 
   return (
       <>
@@ -93,21 +202,61 @@ function Products() {
                       <p>Persianas e cortinas sob medida para cada espaço</p>
 
                     <div className = "products-actions">
-                      <button className='btn-primary'> Solicitar orçamento </button>
-                      <button className='btn-secondary'> Falar no WhatsApp </button>
+                      <button 
+                        className='btn-primary'
+                        onClick={() => navigate("/arealojista")}
+                      > 
+                        Solicitar orçamento 
+                      </button>
+
+                      <button 
+                        className='btn-secondary'
+                        onClick={() => window.open("https://wa.me/5527999700341", "_blank")}
+                        > 
+                        Falar no WhatsApp 
+                      </button>
                     </div>
 
                     <div className='products-filters'>
-                         <button className="filter-btn active">Todos</button>
-                         <button className="filter-btn">Persianas</button>
-                         <button className="filter-btn">Cortinas</button>
-                         <button className="filter-btn">Blackout</button>
-                         <button className="filter-btn">Rolô</button>
+                         <button  
+                            className={`filter-btn ${filtro === "Todos" ? "active" : ""}`}
+                            onClick = {() => setFiltro("Todos")}  
+                          >
+                            Todos
+                          </button>
+
+                         <button 
+                            className={`filter-btn ${filtro === "Persianas" ? "active" : ""}`}
+                            onClick={() => setFiltro("Persianas")}
+                          >
+                            Persianas
+                          </button>
+
+                         <button 
+                            className={`filter-btn ${filtro === "Cortinas" ? "active" : ""}`}
+                            onClick={() => setFiltro("Cortinas")}
+                          >
+                            Cortinas
+                          </button>
+
+                         <button 
+                           className={`filter-btn ${filtro === "Blackout" ? "active" : ""}`}
+                           onClick={() => setFiltro("Blackout")}
+                          >
+                            PVT
+                          </button>
+
+                         <button 
+                            className={`filter-btn ${filtro === "Rolô" ? "active" : ""}`}
+                            onClick={() => setFiltro("Rolô")}
+                          >
+                            Rolô
+                          </button>
                     </div>
               </section>
 
               <section className='masonry-grid'>
-                  {produtos.map((produto, index) => (
+                  {produtosFiltrados.map((produto, index) => (
                     <div key={index} className="masonry-item">
                         <img src={produto.imagem} alt={produto.nome}/>
                         <div className="img-overlay"/> 
