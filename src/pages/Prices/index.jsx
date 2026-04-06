@@ -17,12 +17,6 @@ function PriceTable() {
   const [acessorios, setAcessorios] = useState([]);
 
   useEffect(() => {
-    if (category !== "Todos") {
-      setActiveTab("acionamentos");
-    }
-  }, [category]);
-
-  useEffect(() => {
     const fetchTipos = async () => {
       try {
         const res = await api.get("/formulario_pedido/tipos");

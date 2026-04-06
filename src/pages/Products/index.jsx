@@ -45,54 +45,61 @@ import hor3 from "../../assets/cotinas/Persianas Horizontais 25mm/hor3.jpg"
 
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom';
+import { button, div } from 'framer-motion/client'
+
 
 const produtos = [
   {
     imagem: db1,
-    tipo: "Double-Vision"
+    tipo: "rolo-double"
   },
   {
     imagem: db2,
-    tipo: "Double-Vision"
+    tipo: "rolo-double"
   },
   {
     imagem: db3,
-    tipo: "Double-Vision"
+    tipo: "rolo-double"
   },
 
   {
     imagem: pe1,
-    tipo: "Painel-Europa"
+    tipo: "painel-europa"
   },
   {
     imagem: pe2,
-    tipo: "Painel-Europa"
+    tipo: "painel-europa"
   },
   {
     imagem: pe3,
-    tipo: "Painel-Europa"
+    tipo: "painel-europa"
   },
   {
     imagem: pe4,
-    tipo: "Painel-Europa"
+    tipo: "painel-europa"
   },
   {
     imagem: pe5,
-    tipo: "Painel-Europa"
+    tipo: "painel-europa"
   },
   
   {
     imagem: pr1,
-    tipo: "Painel-Roma"
+    tipo: "painel-roma"
   },
   {
     imagem: pr2,
-    tipo: "Painel-Roma"
+    tipo: "painel-roma"
   },
 
   {
     imagem: pvt1,
-    tipo: "Pvt"
+    tipo: "pvt"
+  },
+
+  {
+    imagem: pvt1,
+    tipo: "pvc"
   },
 
 
@@ -158,12 +165,12 @@ const produtos = [
   
   {
     imagem: romana,
-    tipo: "Romana"
+    tipo: "romana"
   },
 
   {
     imagem: hor1,
-    tipo: "pers-hor25"
+    tipo: "hor-25"
   },
   
   {
@@ -174,25 +181,71 @@ const produtos = [
   {
     imagem: hor3,
     tipo: "pers-hor25"
+  },
+  {
+    imagem: hor3,
+    tipo: "pers-hor16"
+  },
+  {
+    imagem: hor3,
+    tipo: "pers-hor16"
   }
 
 ]
 
+const estrutura = {
+  "Todos": [],
+
+  "Persiana Horizontal": ["hor-25", "hor-16"],
+  "Cortina Rolô": ["Rolo", "rolo-double"],
+  "Painel": ["painel-europa", "painel-roma"],
+  "Persiana Vertical": ["pvc", "pvt"],
+  "Cortina Romana": ["romana"]
+
+}
+
+
+const subcategoriasMap = {
+  "Persiana Horizontal" : [
+    { label: "25mm", tipo: "hor-25"},
+    { label: "16mm", tipo: "hor-16"}
+  ],
+
+  "Cortina Rolô" : [
+     {label: "Convencional", tipo: "Rolo"},
+     {label: "Double Vision", tipo: "rolo-double"}
+  ],
+
+  "Painel": [
+    {label: "Europa", tipo: "painel-europa"},
+    {label: "Roma", tipo: "painel-roma"}
+  ],
+
+  "Persiana Vertical": [
+    {label: "PVC", tipo: "pvc"},
+    {label: "Tecido (PVT)", tipo: "pvt"}
+  ],
+
+  "Cortina Romana": []
+}
+
+
 function Products() {
 
  
-  const [filtro, setFiltro] = useState("Todos")
   const navigate = useNavigate()
+  const [categoria, setCategoria] = useState("Todos")
+  const [subcategoria, setSubcategoria] = useState(null)
+ 
+  const produtosFiltrados = produtos.filter(p => {
+    if (categoria === "Todos") return true
 
-  const filtrosMap = {
-    Todos: () => true,
-    Persianas: p => p.tipo === "pers-hor25",
-    Cortinas: p => ["Double-Vision", "Painel-Europa", "Painel-Roma", "Pvt", "Romana"].includes(p.tipo),
-    Blackout: p => p.tipo === "Pvt",
-    Rolô: p => p.tipo === "Rolo"
-  }
+    if (subcategoria) {
+      return p.tipo === subcategoria
+    }
 
-  const produtosFiltrados = produtos.filter(filtrosMap[filtro])
+    return estrutura[categoria].includes(p.tipo)
+  })
 
   return (
       <>
@@ -218,41 +271,36 @@ function Products() {
                     </div>
 
                     <div className='products-filters'>
-                         <button  
-                            className={`filter-btn ${filtro === "Todos" ? "active" : ""}`}
-                            onClick = {() => setFiltro("Todos")}  
-                          >
-                            Todos
-                          </button>
 
-                         <button 
-                            className={`filter-btn ${filtro === "Persianas" ? "active" : ""}`}
-                            onClick={() => setFiltro("Persianas")}
-                          >
-                            Persianas
-                          </button>
-
-                         <button 
-                            className={`filter-btn ${filtro === "Cortinas" ? "active" : ""}`}
-                            onClick={() => setFiltro("Cortinas")}
-                          >
-                            Cortinas
-                          </button>
-
-                         <button 
-                           className={`filter-btn ${filtro === "Blackout" ? "active" : ""}`}
-                           onClick={() => setFiltro("Blackout")}
-                          >
-                            PVT
-                          </button>
-
-                         <button 
-                            className={`filter-btn ${filtro === "Rolô" ? "active" : ""}`}
-                            onClick={() => setFiltro("Rolô")}
-                          >
-                            Rolô
-                          </button>
+                          {Object.keys(estrutura).map(cat => (
+                            <button
+                              key = {cat}
+                              className={`filter-btn ${categoria === cat ? "active" : ""}`}
+                              onClick={() => {
+                                setCategoria(cat)
+                                setSubcategoria(null)
+                              }}
+                            >
+                              {cat}
+                            </button>
+                          ))}
                     </div>
+
+                    {categoria !== "Todos" && subcategoriasMap[categoria]?.length > 0 && (
+                        <div className='products-subfilters'>
+
+                            {subcategoriasMap[categoria].map(sub => (
+                                <button
+                                  key = {sub.tipo}
+                                  className={`filter-btn ${subcategoria === sub.tipo ? "active" : ""}`}
+                                  onClick={() => setSubcategoria(sub.tipo)}
+                                >
+                                    {sub.label}
+                                </button>
+                            ))}
+
+                        </div>
+                    )}
               </section>
 
               <section className='masonry-grid'>

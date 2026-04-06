@@ -28,6 +28,28 @@
   margin-bottom: 15px;
   flex-direction: wrap;
 }
+
+.products-subfilters {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.products-subfilters .filter-btn {
+  background: #eee;
+  color: #333;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.products-subfilters .filter-btn.active {
+  background: #333;
+  color: #fff;
+}
+
 .btn-primary {
   background: #3b2f2f;
   color: #fff;
